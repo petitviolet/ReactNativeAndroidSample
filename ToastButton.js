@@ -13,12 +13,13 @@ var ToastButton = React.createClass({
   propTypes: {
     text: React.PropTypes.string.isRequired,
   },
-  getInitialState: function () {
-    return {};
-  },
   render: function () {
     return (
-      <TouchableNativeFeedback onPress={() => ToastAndroid.show(`Your input is ${this.props.text}`, ToastAndroid.SHORT)}  background={TouchableNativeFeedback.SelectableBackground()} style={styles.toastButton}>
+      <TouchableNativeFeedback
+        onPress={() =>
+          ToastAndroid.show(`Your input is ${this.props.text}`, ToastAndroid.SHORT)}
+        background={TouchableNativeFeedback.SelectableBackground()}
+        style={styles.toastButton}>
         <View>
           <Text style={styles.toastButtonText}>Tap me</Text>
         </View>

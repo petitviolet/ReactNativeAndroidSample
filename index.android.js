@@ -21,7 +21,7 @@ var {
 
 var ReactSampleProject = React.createClass({
   getInitialState: function() {
-    return {text: ""};
+    return {};
   },
   render: function() {
     var todoItem = {isChecked: false, label: 'hoge'};
