@@ -6,6 +6,8 @@
 
 var React = require('react-native');
 var ToastButton = require('./ToastButton');
+var TodoItem = require('./TodoItem');
+
 var {
   AppRegistry,
   StyleSheet,
@@ -19,34 +21,35 @@ var {
 
 var ReactSampleProject = React.createClass({
   getInitialState: function() {
-    return {text: "sample"};
+    return {text: ""};
   },
   render: function() {
-    var MOCKED_MOVIES_DATA = [
-      {title: 'Title', year: '2015', posters: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}},
-    ];
-    var movie = MOCKED_MOVIES_DATA[0];
+    var todoItem = {isChecked: false, label: 'hoge'};
     return (
       <View style={styles.container}>
        <Text>{this.state.text}</Text>
-       <Text>{movie.title}</Text>
-       <Text>{movie.year}</Text>
-       <Image style={styles.thumbnail} source={{uri: movie.posters.thumbnail}} />
-       <TextInput onChangeText={(text) => this.setState({text})} value={this.state.text} />
-       <ToastButton />
+       <ToastButton text={this.state.text}/>
+       <TextInput
+          style={styles.textInput}
+          onChangeText={(text) => this.setState({text})}
+          value={this.state.text} />
+       <TodoItem label={todoItem.label} />
       </View>
     );
   }
 });
 
 var styles = StyleSheet.create({
+  textInput: {
+    marginLeft: 30,
+    marginRight: 30,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  thumbnail: { width: 30, height: 30, },
 });
 
 AppRegistry.registerComponent('ReactSampleProject', () => ReactSampleProject);
