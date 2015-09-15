@@ -10,15 +10,18 @@ var {
 } = React;
 
 var ToastButton = React.createClass({
+  propTypes: {
+    text: React.PropTypes.string.isRequired,
+  },
   getInitialState: function () {
-    return {text: 'hoge'};
+    return {};
   },
   render: function () {
     return (
-      <TouchableNativeFeedback onPress={() => ToastAndroid.show(`Your input is ${this.state.text}`, ToastAndroid.SHORT)}  background={TouchableNativeFeedback.SelectableBackground()}>
-      <View style={styles.toastButton}>
-        <Text style={styles.toastButtonText}>Tap me</Text>
-      </View>
+      <TouchableNativeFeedback onPress={() => ToastAndroid.show(`Your input is ${this.props.text}`, ToastAndroid.SHORT)}  background={TouchableNativeFeedback.SelectableBackground()} style={styles.toastButton}>
+        <View>
+          <Text style={styles.toastButtonText}>Tap me</Text>
+        </View>
       </TouchableNativeFeedback>
     );
   },
@@ -26,12 +29,14 @@ var ToastButton = React.createClass({
 
 var styles = StyleSheet.create({
   toastButton: {
-    alignItems: 'center',
-    alignSelf: 'center'
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    textAlign: 'center',
   },
   toastButtonText: {
-    width: 100,
-    height: 100,
+    alignItems: 'center',
+    alignSelf: 'center',
     backgroundColor: 'white',
     color: 'red',
     textAlign: 'center',
